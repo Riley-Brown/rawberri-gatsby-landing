@@ -8,29 +8,31 @@ import grubHubSvg from "assets/svg/grub-hub.svg"
 
 import { StyledNav } from "./StyledNav"
 
-const Nav = ({ siteTitle }) => (
+const Nav = ({ siteTitle, pathname }) => (
   <StyledNav>
     <div className="nav-container">
       <Link to="/">
         <img src={logo} />
       </Link>
       <ul>
-        <li>
-          {/* <img src={twitterSvg} alt="" /> */}
-          Home
+        <li data-active={pathname === "/"}>
+          <Link to="/">Home</Link>
         </li>
-        <li>About</li>
-        <li>Contact</li>
-        <li>Menu</li>
+        <li data-active={pathname === "/about"}>
+          <Link to="/about">About</Link>
+        </li>
+        <li data-active={pathname === "/contact"}>
+          <Link to="/contact">Contact</Link>
+        </li>
+        <li data-active={pathname === "/menu"}>
+          <Link to="/menu">Menu</Link>
+        </li>
         <li>
           <a href="https://wizardly-jang-d732c8.netlify.com/">Store</a>
         </li>
         <li>
           <a href="https://loving-kilby-fc3f0a.netlify.com/">Order Online</a>
         </li>
-
-        {/* <img src={instagramSvg} alt="" /> */}
-        {/* <img src={grubHubSvg} alt="" /> */}
       </ul>
     </div>
   </StyledNav>
