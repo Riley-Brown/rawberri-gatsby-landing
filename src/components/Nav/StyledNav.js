@@ -20,16 +20,28 @@ export const StyledNav = styled.nav`
       display: flex;
       list-style: none;
       align-items: center;
-      * {
-        color: var(--secondary);
-      }
       li {
-        margin: 0 5px;
-        padding: 10px;
-        cursor: pointer;
         font-size: 2rem;
+        color: var(--secondary);
         a {
           text-decoration: none;
+          transition: 200ms;
+          color: inherit;
+          margin: 0 5px;
+          padding: 10px;
+          border-radius: 4px;
+          &:hover {
+            opacity: 0.7;
+            background: var(--secondary);
+            color: #fff;
+          }
+        }
+      }
+      li[data-active="true"] {
+        a {
+          opacity: 0.7;
+          background: var(--secondary);
+          color: #fff;
         }
       }
     }
