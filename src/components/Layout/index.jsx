@@ -12,7 +12,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import Nav from "components/Nav"
 import "index.css"
 
-const Layout = ({ children, style }) => {
+const Layout = ({ children, style, pathname }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -25,7 +25,7 @@ const Layout = ({ children, style }) => {
 
   return (
     <>
-      <Nav />
+      <Nav pathname={pathname} />
       <div
         style={
           {
