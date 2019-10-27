@@ -43,9 +43,15 @@ export const StyledLanding = styled.div`
       button {
         background: #fff;
         color: var(--secondary);
-        padding: 10px 25px;
         font-size: 2.3rem;
-        margin: 0 15px;
+        margin: 10px 15px;
+        a {
+          padding: 10px 25px;
+          text-decoration: none;
+          color: inherit;
+          background: inherit;
+          border-radius: inherit;
+        }
         &:last-of-type {
           background: var(--secondary);
           color: #fff;
