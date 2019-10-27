@@ -37,7 +37,7 @@ export default function Landing() {
       <TransitionGroup>
         <CSSTransition
           onEntering={() => setRandomNum(Math.floor(Math.random() * 50))}
-          appear={true}
+          // appear={true}
           key={index}
           timeout={1000}
           classNames="fade"
