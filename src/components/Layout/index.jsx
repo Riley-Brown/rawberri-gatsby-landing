@@ -10,7 +10,7 @@ import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
 import Nav from "components/Nav"
-import "./layout.css"
+import "index.css"
 
 const Layout = ({ children, style }) => {
   const data = useStaticQuery(graphql`
@@ -27,15 +27,17 @@ const Layout = ({ children, style }) => {
     <>
       <Nav />
       <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 1400,
-          padding: `0px 1.0875rem 1.45rem`,
-          paddingTop: 0,
-          display: "flex",
-          justifyContent: "space-between",
-          ...style,
-        }}
+        style={
+          {
+            // margin: `0 auto`,
+            // maxWidth: 1400,
+            // padding: `0px 1.0875rem 1.45rem`,
+            // paddingTop: 0,
+            // display: "flex",
+            // justifyContent: "space-between",
+            // ...style,
+          }
+        }
       >
         {children}
       </div>
