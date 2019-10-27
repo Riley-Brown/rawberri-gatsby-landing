@@ -53,8 +53,24 @@ export default function Landing() {
         </h1>
         <h6>An organic super-food cafe </h6>
         <div className="buttons">
-          <button>Order Online</button>
-          <button>Rawberri Store</button>
+          <button>
+            <a
+              rel="noopener noreferrer"
+              target="_blank"
+              href="https://loving-kilby-fc3f0a.netlify.com/"
+            >
+              Order Online
+            </a>
+          </button>
+          <button>
+            <a
+              rel="noopener noreferrer"
+              target="_blank"
+              href="https://wizardly-jang-d732c8.netlify.com/"
+            >
+              Rawberri Store
+            </a>
+          </button>
         </div>
       </div>
       {/* </CSSTransition> */}
