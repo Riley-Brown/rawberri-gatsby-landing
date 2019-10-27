@@ -6,8 +6,8 @@ import Image from "components/image"
 import SEO from "components/seo"
 import Landing from "components/Landing"
 
-const IndexPage = () => (
-  <Layout>
+const IndexPage = ({ location }) => (
+  <Layout pathname={location.pathname}>
     <SEO title="Home" />
     <Landing />
   </Layout>
