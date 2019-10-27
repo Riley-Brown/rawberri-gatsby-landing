@@ -36,8 +36,7 @@ export default function Landing() {
     <StyledLanding ref={landingRef} img={images[index]} random={randomNum}>
       <TransitionGroup>
         <CSSTransition
-          onEntering={() => setRandomNum(Math.floor(Math.random() * 50))}
-          // appear={true}
+          onEntering={() => setRandomNum(Math.floor(Math.random() * 20))}
           key={index}
           timeout={1000}
           classNames="fade"
@@ -47,6 +46,18 @@ export default function Landing() {
           </div>
         </CSSTransition>
       </TransitionGroup>
+      {/* <CSSTransition appear={true} classNames="fade" timeout={1000} in={true}> */}
+      <div className="landing-content">
+        <h1>
+          Welcome to <span>Rawberri</span>
+        </h1>
+        <h6>An organic super-food cafe </h6>
+        <div className="buttons">
+          <button>Order Online</button>
+          <button>Rawberri Store</button>
+        </div>
+      </div>
+      {/* </CSSTransition> */}
     </StyledLanding>
   )
 }
