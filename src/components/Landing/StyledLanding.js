@@ -19,7 +19,7 @@ export const StyledLanding = styled.div`
       height: calc(100vh - 101px);
       object-fit: cover;
       width: 100%;
-      object-position: 50% ${props => props.random}%;
+      /* object-position: 50% ${props => props.random}%; */
       transition: 2s;
       transform-origin: top left;
       animation-name: moveImg;
@@ -33,10 +33,10 @@ export const StyledLanding = styled.div`
     img[data-index="1"] {
       transform-origin: right center;
     }
-    img[data-index="3"] {
+    img[data-index="2"] {
       transform-origin: left bottom;
     }
-    img[data-index="4"] {
+    img[data-index="3"] {
       transform-origin: right center;
     }
     @keyframes moveImg {
