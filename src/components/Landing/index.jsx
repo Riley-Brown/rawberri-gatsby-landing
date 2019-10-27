@@ -43,7 +43,7 @@ export default function Landing() {
           classNames="fade"
         >
           <div className="overlay">
-            <img src={images[index]} alt="" />
+            <img src={images[index]} alt="" data-index={index} />
           </div>
         </CSSTransition>
       </TransitionGroup>
