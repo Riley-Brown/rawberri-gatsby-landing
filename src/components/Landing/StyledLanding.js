@@ -14,12 +14,38 @@ export const StyledLanding = styled.div`
     left: 0;
     right: 0;
     z-index: -1;
+    overflow: hidden;
     img {
       height: calc(100vh - 101px);
       object-fit: cover;
       width: 100%;
       object-position: 50% ${props => props.random}%;
-      transition: object-position 1s;
+      transition: 2s;
+      transform-origin: top left;
+      animation-name: moveImg;
+      animation-duration: 20s;
+      animation-timing-function: linear;
+      position: absolute;
+    }
+    img[data-index="0"] {
+      transform-origin: top left;
+    }
+    img[data-index="1"] {
+      transform-origin: right center;
+    }
+    img[data-index="3"] {
+      transform-origin: left bottom;
+    }
+    img[data-index="4"] {
+      transform-origin: right center;
+    }
+    @keyframes moveImg {
+      from {
+        transform: scale(1);
+      }
+      to {
+        transform: scale(1.25);
+      }
     }
   }
 `
