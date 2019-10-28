@@ -35,7 +35,7 @@ export const StyledLanding = styled.div`
     h6 {
       font-size: 3rem;
       text-align: center;
-      font-weight: bold;
+      font-weight: 200;
     }
     .buttons {
       text-align: center;
