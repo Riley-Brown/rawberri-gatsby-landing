@@ -5,6 +5,7 @@ export const StyledNav = styled.nav`
   top: 0;
   z-index: 1;
   box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
+  background: #fff;
   @media (max-width: 768px) {
     position: static;
   }
