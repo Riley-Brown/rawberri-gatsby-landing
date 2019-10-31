@@ -12,7 +12,9 @@ export const StyledLanding = styled.div`
   justify-content: center;
   .landing-content {
     color: #fff;
-    animation: 1s transformIn ease-out;
+    transform: translateY(-40px);
+    opacity: 0;
+    animation: ${props => props.loaded && "1s transformIn ease-out forwards"};
     @keyframes transformIn {
       from {
         opacity: 0;
@@ -71,10 +73,10 @@ export const StyledLanding = styled.div`
       height: calc(100vh - 101px);
       object-fit: cover;
       width: 100%;
-      /* object-position: 50% ${props => props.random}%; */
+       /* object-position: 50% ${props => props.random}%; */
       transition: 2s;
       transform-origin: top left;
-      animation-name: moveImg;
+      animation-name: ${props => props.loaded && "moveImg"};
       animation-duration: 20s;
       animation-timing-function: linear;
       position: absolute;
