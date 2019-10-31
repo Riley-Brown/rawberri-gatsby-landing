@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { StyledAbout } from "./StyledAbout"
 
 import rawberriOne from "assets/img/rawberri-inside-1.jpg"
@@ -6,6 +6,10 @@ import rawberriYogurt from "assets/img/rawberri-yogurt.jpg"
 
 export default function About() {
   const [loaded, setLoaded] = useState(false)
+
+  useEffect(() => {
+    setLoaded(true)
+  }, [])
 
   return (
     <StyledAbout loaded={loaded}>
@@ -22,21 +26,11 @@ export default function About() {
         </div>
       </div>
       <div className="image-container">
-        <img
-          data-right
-          src={rawberriOne}
-          alt=""
-          onLoad={() => setLoaded(true)}
-        />
+        <img data-right src={rawberriOne} alt="" />
         <span data-right className="overlay" />
       </div>
       <div className="image-container">
-        <img
-          data-left
-          src={rawberriYogurt}
-          alt=""
-          onLoad={() => setLoaded(true)}
-        />
+        <img data-left src={rawberriYogurt} alt="" />
         <span data-left className="overlay" />
       </div>
       <div className="about-content">
