@@ -43,10 +43,10 @@ export const StyledAbout = styled.div`
     background: #fff;
   }
   .overlay[data-left] {
-    animation: left 1s forwards;
+    animation: ${props => props.loaded && "left 1s forwards"};
   }
   .overlay[data-right] {
-    animation: right 1s forwards;
+    animation: ${props => props.loaded && "right 1s forwards"};
   }
   img {
     width: 100%;

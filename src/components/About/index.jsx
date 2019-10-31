@@ -1,12 +1,14 @@
-import React from "react"
+import React, { useState } from "react"
 import { StyledAbout } from "./StyledAbout"
 
 import rawberriOne from "assets/img/rawberri-inside-1.jpg"
 import rawberriYogurt from "assets/img/rawberri-yogurt.jpg"
 
 export default function About() {
+  const [loaded, setLoaded] = useState(false)
+
   return (
-    <StyledAbout>
+    <StyledAbout loaded={loaded}>
       <div className="about-content">
         <h1>About Us</h1>
         <div className="text-wrapper">
@@ -20,11 +22,21 @@ export default function About() {
         </div>
       </div>
       <div className="image-container">
-        <img data-right src={rawberriOne} alt="" />
+        <img
+          data-right
+          src={rawberriOne}
+          alt=""
+          onLoad={() => setLoaded(true)}
+        />
         <span data-right className="overlay" />
       </div>
       <div className="image-container">
-        <img data-left src={rawberriYogurt} alt="" />
+        <img
+          data-left
+          src={rawberriYogurt}
+          alt=""
+          onLoad={() => setLoaded(true)}
+        />
         <span data-left className="overlay" />
       </div>
       <div className="about-content">
