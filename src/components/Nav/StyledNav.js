@@ -1,13 +1,15 @@
 import styled from "styled-components"
+import { transitionClasses } from "helpers/transitionClasses"
 
 export const StyledNav = styled.nav`
+  ${transitionClasses("nav", 400)};
   position: sticky;
   top: 0;
   z-index: 1;
   box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
   background: #fff;
-  @media (max-width: 768px) {
-    position: static;
+  @media (max-width: 1100px) {
+    height: 80px;
   }
   .nav-container {
     max-width: 1400px;
@@ -21,9 +23,24 @@ export const StyledNav = styled.nav`
       display: flex;
       list-style: none;
       align-items: center;
+      @media (max-width: 1100px) {
+        position: fixed;
+        top: 80px;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        flex-direction: column;
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(10px);
+        justify-content: center;
+      }
       li {
         font-size: 2rem;
         color: var(--secondary);
+        @media (max-width: 1100px) {
+          font-size: 3rem;
+          margin: 20px;
+        }
         a {
           text-decoration: none;
           transition: 200ms;
@@ -31,6 +48,9 @@ export const StyledNav = styled.nav`
           margin: 0 5px;
           padding: 10px;
           border-radius: 4px;
+          @media (max-width: 1100px) {
+            padding: 10px 30px;
+          }
           &:hover {
             opacity: 0.7;
             background: var(--secondary);
@@ -48,8 +68,43 @@ export const StyledNav = styled.nav`
     }
     img {
       height: 70px;
-      @media (max-width: 960px) {
+      @media (max-width: 1100px) {
         height: 50px;
+      }
+    }
+    .menu-icon {
+      display: none;
+      width: 50px;
+      height: 40px;
+      cursor: pointer;
+      position: relative;
+      transition: 300ms ease-in-out;
+      @media (max-width: 1100px) {
+        display: flex;
+      }
+      span {
+        display: block;
+        position: absolute;
+        height: 6px;
+        width: 100%;
+        background: #222;
+        transition: 300ms ease-in-out;
+        &:nth-child(1) {
+          top: ${props => (props.showMobileMenu ? "15px" : 0)};
+          transform: ${props => (props.showMobileMenu ? "rotate(135deg)" : 0)};
+        }
+        &:nth-child(2) {
+          top: 15px;
+          left: ${props => (props.showMobileMenu ? "-60px" : 0)};
+          opacity: ${props => (props.showMobileMenu ? "0" : 1)};
+        }
+        &:nth-child(3) {
+          top: ${props => (props.showMobileMenu ? "15px" : "30px")};
+          transform: ${props => (props.showMobileMenu ? "rotate(-135deg)" : 0)};
+        }
+      }
+      @media (max-width: 1100px) {
+        display: inline;
       }
     }
   }
