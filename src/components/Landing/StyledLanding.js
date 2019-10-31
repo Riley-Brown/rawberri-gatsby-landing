@@ -10,6 +10,9 @@ export const StyledLanding = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  @media (max-width: 1100px) {
+    height: calc(100vh - 80px);
+  }
   .landing-content {
     color: #fff;
     transform: translateY(-40px);
@@ -73,13 +76,16 @@ export const StyledLanding = styled.div`
       height: calc(100vh - 101px);
       object-fit: cover;
       width: 100%;
-       /* object-position: 50% ${props => props.random}%; */
+      /* object-position: 50% ${props => props.random}%; */
       transition: 2s;
       transform-origin: top left;
       animation-name: ${props => props.loaded && "moveImg"};
       animation-duration: 20s;
       animation-timing-function: linear;
       position: absolute;
+      @media (max-width: 1100px) {
+        height: calc(100vh - 80px);
+      }
     }
     img[data-index="0"] {
       transform-origin: top left;
