@@ -6,8 +6,8 @@ import Image from "components/image"
 import SEO from "components/seo"
 import About from "components/About"
 
-const AboutPage = ({ location }) => (
-  <Layout pathname={location.pathname}>
+const AboutPage = ({ uri }) => (
+  <Layout pathname={uri}>
     <SEO title="About" />
     <About />
   </Layout>
