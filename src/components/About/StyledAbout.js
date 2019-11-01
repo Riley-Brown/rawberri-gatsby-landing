@@ -7,10 +7,20 @@ export const StyledAbout = styled.div`
   margin: 90px auto;
   justify-content: space-between;
   flex-wrap: wrap;
+  @media (max-width: 960px) {
+    width: 90%;
+    margin: 60px auto;
+  }
+  @media (max-width: 450px) {
+    margin: 30px auto;
+  }
   .about-content {
     flex: 0 0 50%;
     background: #fff;
     padding: 25px;
+    @media (max-width: 768px) {
+      flex: 0 0 100%;
+    }
     h1 {
       font-size: 5rem;
       text-align: center;
@@ -20,6 +30,9 @@ export const StyledAbout = styled.div`
     .text-wrapper {
       width: 80%;
       margin: auto;
+      @media (max-width: 500px) {
+        width: 95%;
+      }
       p {
         margin-bottom: 10px;
         line-height: 1.6;
@@ -33,6 +46,13 @@ export const StyledAbout = styled.div`
     align-items: center;
     overflow: hidden;
     position: relative;
+    @media (max-width: 768px) {
+      flex: 0 0 80%;
+      margin: 20px auto;
+    }
+    @media (max-width: 500px) {
+      flex: 0 0 95%;
+    }
   }
   .overlay {
     position: absolute;
