@@ -25,6 +25,7 @@ export const StyledNav = styled.nav`
       align-items: center;
       @media (max-width: 1100px) {
         position: fixed;
+        overflow-y: auto;
         top: 80px;
         bottom: 0;
         right: 0;
@@ -34,12 +35,21 @@ export const StyledNav = styled.nav`
         backdrop-filter: blur(10px);
         justify-content: center;
       }
+      @media (max-height: 600px) {
+        justify-content: initial;
+        -webkit-overflow-scrolling: touch;
+      }
       li {
         font-size: 2rem;
         color: var(--secondary);
         @media (max-width: 1100px) {
           font-size: 3rem;
           margin: 20px;
+        }
+        &:first-of-type {
+          @media (max-height: 600px) {
+            margin-top: 40px;
+          }
         }
         a {
           text-decoration: none;
