@@ -13,11 +13,18 @@ export const StyledLanding = styled.div`
   @media (max-width: 1100px) {
     height: calc(100vh - 80px);
   }
+  @media (max-height: 450px) {
+    height: 100%;
+    padding: 50px 0;
+  }
   .landing-content {
     color: #fff;
     transform: translateY(-40px);
     opacity: 0;
     animation: ${props => props.loaded && "1s transformIn ease-out forwards"};
+    @media (max-width: 600px) {
+      width: 90%;
+    }
     @keyframes transformIn {
       from {
         opacity: 0;
@@ -32,6 +39,13 @@ export const StyledLanding = styled.div`
       font-size: 5rem;
       text-transform: uppercase;
       font-weight: 200;
+      @media (max-width: 600px) {
+        text-align: center;
+        font-size: 4.5rem;
+      }
+      @media (max-width: 350px) {
+        font-size: 4rem;
+      }
       span {
         font-size: inherit;
         font-weight: bold;
@@ -41,6 +55,9 @@ export const StyledLanding = styled.div`
       font-size: 3rem;
       text-align: center;
       font-weight: 200;
+      @media (max-width: 350px) {
+        font-size: 2.5rem;
+      }
     }
     .buttons {
       text-align: center;
@@ -50,12 +67,21 @@ export const StyledLanding = styled.div`
         color: var(--secondary);
         font-size: 2.3rem;
         margin: 10px 15px;
+        @media (max-width: 550px) {
+          display: block;
+          width: 90%;
+          max-width: 300px;
+          margin: 10px auto 20px;
+        }
         a {
           padding: 10px 25px;
           text-decoration: none;
           color: inherit;
           background: inherit;
           border-radius: inherit;
+          @media (max-width: 550px) {
+            display: block;
+          }
         }
         &:last-of-type {
           background: var(--secondary);
@@ -76,7 +102,7 @@ export const StyledLanding = styled.div`
       height: calc(100vh - 101px);
       object-fit: cover;
       width: 100%;
-      /* object-position: 50% ${props => props.random}%; */
+        /* object-position: 50% ${props => props.random}%; */
       transition: 2s;
       transform-origin: top left;
       animation-name: ${props => props.loaded && "moveImg"};
@@ -85,6 +111,9 @@ export const StyledLanding = styled.div`
       position: absolute;
       @media (max-width: 1100px) {
         height: calc(100vh - 80px);
+      }
+      @media (max-height: 600px) {
+        height: 100%;
       }
     }
     img[data-index="0"] {
