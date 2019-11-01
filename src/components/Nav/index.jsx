@@ -9,21 +9,26 @@ import { CSSTransition } from "react-transition-group"
 
 import { StyledNav } from "./StyledNav"
 
-const Nav = ({ siteTitle, pathname }) => {
-  const [isMobile, setIsMobile] = useState()
+import MobileNav from "./MobileNav"
 
+const Nav = ({ siteTitle, pathname }) => {
+  const [isMobile, setIsMobile] = useState(false)
   const [showMobileMenu, setShowMobileMenu] = useState(false)
 
   useEffect(() => {
     const mq = window.matchMedia("(max-width: 1100px)")
+    if (mq.matches) {
+      setIsMobile(true)
+    }
     mq.addListener(() => {
+      console.log(mq.matches)
       if (mq.matches) {
         setIsMobile(true)
       } else {
         setIsMobile(false)
       }
     })
-  })
+  }, [])
 
   return (
     <StyledNav showMobileMenu={showMobileMenu}>
@@ -31,12 +36,7 @@ const Nav = ({ siteTitle, pathname }) => {
         <Link to="/">
           <img src={logo} />
         </Link>
-
-        <CSSTransition
-          timeout={300}
-          in={isMobile ? showMobileMenu : true}
-          classNames="nav"
-        >
+        <MobileNav isMobile={isMobile} showMobileMenu={showMobileMenu}>
           <ul onClick={() => setShowMobileMenu(false)}>
             <li data-active={pathname === "/"}>
               <Link to="/">Home</Link>
@@ -59,7 +59,7 @@ const Nav = ({ siteTitle, pathname }) => {
               </a>
             </li>
           </ul>
-        </CSSTransition>
+        </MobileNav>
         <div
           onClick={() => setShowMobileMenu(!showMobileMenu)}
           className="menu-icon"
