@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react"
 
-export const useIsVisible = ({ ref, rootMargin, unobserveOnTrue }) => {
+export const useIsVisible = ({
+  ref,
+  rootMargin,
+  unobserveOnTrue,
+  threshold,
+}) => {
   const [visible, setVisible] = useState(false)
   const [observer, setObserver] = useState()
 
@@ -11,9 +16,10 @@ export const useIsVisible = ({ ref, rootMargin, unobserveOnTrue }) => {
         setVisible(entry.isIntersecting)
       },
       {
-        rootMargin,
+        threshold: threshold,
       }
     )
+
     setObserver(obs)
     if (ref.current) {
       obs.observe(ref.current)
