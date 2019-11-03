@@ -9,7 +9,7 @@ export function useCarousel({
   arrowKeysCycle,
 }) {
   const [index, setIndex] = useState(0)
-  const visible = useIsVisible({ element, defaultVisible })
+  const visible = useIsVisible({ ref: element, defaultVisible })
   const [int, setInt] = useState(null)
   const [paused, setPaused] = useState(false)
 
