@@ -89,7 +89,11 @@ export default function Contact() {
       },
     }
     axios
-      .post("/", encode({ "form-name": "contact", email, message }), config)
+      .post(
+        "/contact",
+        encode({ "form-name": "contact", email, message }),
+        config
+      )
       .then(() => setSaved(true))
       .catch(err => {
         console.log(err)
@@ -126,7 +130,7 @@ export default function Contact() {
         </div>
         <div className="form-container">
           <h3>Send us a message!</h3>
-          <form name="contact" netlify onSubmit={onSubmit}>
+          <form name="contact" netlify data-netlify="true" onSubmit={onSubmit}>
             <div>
               <label htmlFor="contact-email">Email</label>
               <input
@@ -148,6 +152,8 @@ export default function Contact() {
                 onChange={e => setMessage(e.target.value)}
               />
             </div>
+            <input type="hidden" name="contact" value="contact" />
+
             <div>
               {saved ? (
                 <span>Message sent! We will get back to you soon.</span>
