@@ -126,7 +126,7 @@ export default function Contact() {
         </div>
         <div className="form-container">
           <h3>Send us a message!</h3>
-          <form name="contact" onSubmit={onSubmit}>
+          <form name="contact" netlify onSubmit={onSubmit}>
             <div>
               <label htmlFor="contact-email">Email</label>
               <input
