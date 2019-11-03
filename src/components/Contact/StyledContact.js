@@ -6,14 +6,18 @@ export const StyledContact = styled.div`
   margin: 90px auto;
   display: flex;
   justify-content: space-between;
-  @media (max-width: 960px) {
-    flex-direction: column;
-  }
   @media (max-width: 1300px) {
     width: 90%;
   }
   @media (max-width: 1100px) {
     width: 95%;
+  }
+  @media (max-width: 960px) {
+    flex-direction: column;
+    margin: 60px auto;
+  }
+  @media (max-width: 450px) {
+    margin: 30px auto;
   }
   .contact-container {
     flex: 0 0 50%;
