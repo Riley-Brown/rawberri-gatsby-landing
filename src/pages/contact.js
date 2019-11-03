@@ -3,7 +3,7 @@ import React from "react"
 import Layout from "components/Layout"
 import SEO from "components/seo"
 
-import Contact from "Components/Contact"
+import Contact from "components/Contact"
 
 export default function ContactPage({ uri }) {
   return (
