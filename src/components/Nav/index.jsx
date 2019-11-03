@@ -1,6 +1,6 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
-import React, { useEffect, useState } from "react"
+import React, { useLayoutEffect, useState } from "react"
 import logo from "assets/img/logo-no-bg.png"
 import twitterSvg from "assets/svg/twitter.svg"
 import instagramSvg from "assets/svg/instagram.svg"
@@ -15,7 +15,7 @@ const Nav = ({ siteTitle, pathname }) => {
   const [isMobile, setIsMobile] = useState(false)
   const [showMobileMenu, setShowMobileMenu] = useState(false)
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const mq = window.matchMedia("(max-width: 1100px)")
     if (mq.matches) {
       setIsMobile(true)
