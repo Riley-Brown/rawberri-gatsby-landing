@@ -20,13 +20,13 @@ export const useIsVisible = ({ ref, rootMargin, unobserveOnTrue }) => {
     }
 
     return () => {
-      observer.unobserve(ref.current)
+      obs.unobserve(ref.current)
     }
   }, [])
 
   // unobserve after true if unobserve prop
   useEffect(() => {
-    if (unobserveOnTrue && visible) {
+    if (unobserveOnTrue && visible && observer) {
       observer.unobserve(ref.current)
     }
   }, [visible])
