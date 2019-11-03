@@ -38,13 +38,13 @@ const Nav = ({ siteTitle, pathname }) => {
         </Link>
         <MobileNav isMobile={isMobile} showMobileMenu={showMobileMenu}>
           <ul onClick={() => setShowMobileMenu(false)}>
-            <li data-active={pathname === "/"}>
+            <li data-active={pathname && pathname === "/"}>
               <Link to="/">Home</Link>
             </li>
-            <li data-active={pathname.includes("/about")}>
+            <li data-active={pathname && pathname.includes("/about")}>
               <Link to="/about">About</Link>
             </li>
-            <li data-active={pathname.includes("/contact")}>
+            <li data-active={pathname && pathname.includes("/contact")}>
               <Link to="/contact">Contact</Link>
             </li>
             <li data-active={pathname === "/menu"}>
