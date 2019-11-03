@@ -6,10 +6,22 @@ export const StyledContact = styled.div`
   margin: 90px auto;
   display: flex;
   justify-content: space-between;
+  @media (max-width: 960px) {
+    flex-direction: column;
+  }
+  @media (max-width: 1300px) {
+    width: 90%;
+  }
+  @media (max-width: 1100px) {
+    width: 95%;
+  }
   .contact-container {
     flex: 0 0 50%;
     background: #fff;
     padding: 20px;
+    @media (max-width: 1100px) {
+      flex: 1 1 50%;
+    }
     h1 {
       font-size: 4rem;
       text-align: center;
@@ -80,6 +92,9 @@ export const StyledContact = styled.div`
     background: #fff;
     padding: 20px;
     display: flex;
+    @media (max-width: 1100px) {
+      flex: 0 0 40%;
+    }
     img {
       width: 100%;
       align-self: center;
