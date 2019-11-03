@@ -13,6 +13,9 @@ export const StyledLanding = styled.div`
   @media (max-width: 1100px) {
     height: calc(100vh - 80px);
   }
+  @media (max-width: 500px) {
+    height: calc(100vh - 50px);
+  }
   @media (max-height: 450px) {
     height: 100%;
     padding: 50px 0;
@@ -102,7 +105,6 @@ export const StyledLanding = styled.div`
       height: calc(100vh - 101px);
       object-fit: cover;
       width: 100%;
-        /* object-position: 50% ${props => props.random}%; */
       transition: 2s;
       transform-origin: top left;
       animation-name: ${props => props.loaded && "moveImg"};
@@ -114,6 +116,9 @@ export const StyledLanding = styled.div`
       }
       @media (max-height: 600px) {
         height: 100%;
+      }
+      @media (max-width: 500px) {
+        height: calc(100vh - 50px);
       }
     }
     img[data-index="0"] {
