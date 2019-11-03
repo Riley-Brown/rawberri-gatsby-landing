@@ -126,12 +126,13 @@ export default function Contact() {
         </div>
         <div className="form-container">
           <h3>Send us a message!</h3>
-          <form onSubmit={onSubmit}>
+          <form name="contact" onSubmit={onSubmit}>
             <div>
               <label htmlFor="contact-email">Email</label>
               <input
                 type="email"
                 id="contact-email"
+                name="email"
                 required
                 onChange={e => setEmail(e.target.value)}
               />
