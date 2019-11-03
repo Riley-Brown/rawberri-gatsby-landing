@@ -4,33 +4,85 @@ export const StyledContact = styled.div`
   width: 80%;
   max-width: 1400px;
   margin: 90px auto;
-  background: #fff;
-  padding: 20px;
   display: flex;
   justify-content: space-between;
   .contact-container {
-    width: 100%;
+    flex: 0 0 50%;
+    background: #fff;
+    padding: 20px;
+    h1 {
+      font-size: 4rem;
+      text-align: center;
+    }
     div {
       display: flex;
-      margin: 10px 0;
+      margin: 15px 0;
       a {
         text-decoration: none;
         color: #222;
       }
       img {
-        width: 20px;
+        width: 23px;
         margin-right: 10px;
       }
       span {
         vertical-align: bottom;
+        font-size: 1.8rem;
       }
     }
   }
-  h1 {
-    font-size: 4rem;
-    text-align: center;
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    margin: 30px auto !important;
+    h3 {
+      text-align: center;
+      font-size: 2rem;
+    }
+    form {
+      div {
+        flex-direction: column;
+      }
+      input,
+      textarea,
+      span {
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        padding: 5px;
+        margin: 5px 0;
+        resize: none;
+        background: #f9f9f9;
+        font-family: inherit;
+        font-size: 1.6rem;
+      }
+      button[type="submit"],
+      span {
+        background: var(--secondary);
+        color: #fff;
+        padding: 10px;
+        cursor: pointer;
+        text-align: center;
+        font-size: 1.6rem;
+        font-family: inherit;
+        position: relative;
+        img {
+          width: 30px;
+          height: 30px;
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+      }
+    }
   }
-  img {
-    width: 50%;
+  .img-container {
+    flex: 0 0 50%;
+    background: #fff;
+    padding: 20px;
+    display: flex;
+    img {
+      width: 100%;
+      align-self: center;
+    }
   }
 `
