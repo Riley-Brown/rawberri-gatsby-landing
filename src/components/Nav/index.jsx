@@ -41,10 +41,10 @@ const Nav = ({ siteTitle, pathname }) => {
             <li data-active={pathname === "/"}>
               <Link to="/">Home</Link>
             </li>
-            <li data-active={pathname === "/about"}>
+            <li data-active={pathname.includes("/about")}>
               <Link to="/about">About</Link>
             </li>
-            <li data-active={pathname === "/contact"}>
+            <li data-active={pathname.includes("/contact")}>
               <Link to="/contact">Contact</Link>
             </li>
             <li data-active={pathname === "/menu"}>
