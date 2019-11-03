@@ -1,11 +1,102 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import { StyledContact } from "./StyledContact"
 import contactSvg from "assets/svg/contact.svg"
 import phone from "assets/svg/phone.svg"
 import mapIcon from "assets/svg/map-pin.svg"
 import clockIcon from "assets/svg/clock.svg"
+import formSpinner from "assets/svg/formSpinner.svg"
+
+import moment from "moment"
+import axios from "axios"
 
 export default function Contact() {
+  const dayOfWeek = Number(moment().day())
+  const currentHour = Number(moment().format("HH"))
+
+  const [open, setOpen] = useState(false)
+  const [email, setEmail] = useState("")
+  const [message, setMessage] = useState("")
+  const [saving, setSaving] = useState(false)
+  const [saved, setSaved] = useState(false)
+
+  const hours = [
+    {
+      openFormatted: "8am",
+      closeFormatted: "8pm",
+      open: 8,
+      close: 20,
+    },
+    {
+      openFormatted: "8am",
+      closeFormatted: "10pm",
+      open: 8,
+      close: 22,
+    },
+    {
+      openFormatted: "8am",
+      closeFormatted: "10pm",
+      open: 8,
+      close: 22,
+    },
+    {
+      openFormatted: "8am",
+      closeFormatted: "10pm",
+      open: 8,
+      close: 22,
+    },
+    {
+      openFormatted: "8am",
+      closeFormatted: "10pm",
+      open: 8,
+      close: 22,
+    },
+    {
+      openFormatted: "8am",
+      closeFormatted: "10pm",
+      open: 8,
+      close: 22,
+    },
+    {
+      openFormatted: "8am",
+      closeFormatted: "10pm",
+      open: 8,
+      close: 22,
+    },
+  ]
+
+  useEffect(() => {
+    if (
+      currentHour > hours[dayOfWeek].open &&
+      currentHour < hours[dayOfWeek].close
+    ) {
+      setOpen(true)
+    }
+  }, [])
+
+  // form encode for netlify
+  const encode = data => {
+    return Object.keys(data)
+      .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+      .join("&")
+  }
+
+  const onSubmit = e => {
+    e.preventDefault()
+    setSaving(true)
+    const config = {
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+    }
+    axios
+      .post("/", encode({ "form-name": "contact", email, message }), config)
+      .then(() => setSaved(true))
+      .catch(err => {
+        console.log(err)
+        setSaving(false)
+      })
+  }
+
   return (
     <StyledContact>
       <div className="contact-container">
@@ -26,23 +117,52 @@ export default function Contact() {
           </a>
         </div>
         <div>
-          <a href="tel:3106527010">
-            <img src={clockIcon} alt="" />
-            <span>Open Now</span>
-          </a>
+          <img src={clockIcon} alt="" />
+          <span>
+            {open
+              ? `Open Now: ${hours[dayOfWeek].openFormatted}-${hours[dayOfWeek].closeFormatted}`
+              : "Currently Closed"}
+          </span>
         </div>
-        <div className="form">
+        <div className="form-container">
           <h3>Send us a message!</h3>
-          <form>
-            <label htmlFor="contact-email">Email</label>
-            <input type="email" id="contact-email" />
-            <label htmlFor="contact-message">Message</label>
-            <textarea name="message" id="contact-message" cols="30" rows="10" />
+          <form onSubmit={onSubmit}>
+            <div>
+              <label htmlFor="contact-email">Email</label>
+              <input
+                type="email"
+                id="contact-email"
+                required
+                onChange={e => setEmail(e.target.value)}
+              />
+            </div>
+            <div>
+              <label htmlFor="contact-message">Message</label>
+              <textarea
+                name="message"
+                id="contact-message"
+                cols="30"
+                rows="5"
+                required
+                onChange={e => setMessage(e.target.value)}
+              />
+            </div>
+            <div>
+              {saved ? (
+                <span>Message sent! We will get back to you soon.</span>
+              ) : (
+                <button type="submit">
+                  {saving ? "Sending..." : "Send"}
+                  {saving && <img src={formSpinner} alt="Loading" />}
+                </button>
+              )}
+            </div>
           </form>
         </div>
       </div>
-
-      <img src={contactSvg} alt="" />
+      <div className="img-container">
+        <img src={contactSvg} alt="" />
+      </div>
     </StyledContact>
   )
 }
