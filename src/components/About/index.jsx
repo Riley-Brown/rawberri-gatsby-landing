@@ -16,10 +16,16 @@ export default function About() {
   const leftRef = useRef()
   const rightRef = useRef()
 
-  const leftVisible = useIsVisible({ ref: leftRef, rootMargin: "-200px" })
-  const rightVisible = useIsVisible({ ref: rightRef, rootMargin: "-200px" })
-
-  console.log(leftVisible, rightVisible)
+  const leftVisible = useIsVisible({
+    ref: leftRef,
+    rootMargin: "-200px",
+    unobserveOnTrue: true,
+  })
+  const rightVisible = useIsVisible({
+    ref: rightRef,
+    rootMargin: "-200px",
+    unobserveOnTrue: true,
+  })
 
   return (
     <StyledAbout loaded={loaded}>
@@ -37,11 +43,19 @@ export default function About() {
       </div>
       <div className="image-container">
         <img data-right src={rawberriOne} ref={rightRef} alt="" />
-        <span data-right className="overlay" />
+        <span
+          style={{ animation: rightVisible && "right 1s forwards" }}
+          data-right
+          className="overlay"
+        />
       </div>
       <div className="image-container">
         <img data-left src={rawberriYogurt} ref={leftRef} alt="" />
-        <span data-left className="overlay" />
+        <span
+          data-left
+          className="overlay"
+          style={{ animation: leftVisible && "left 1s forwards" }}
+        />
       </div>
       <div className="about-content">
         <div className="text-wrapper">
