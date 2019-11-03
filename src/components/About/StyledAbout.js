@@ -62,12 +62,6 @@ export const StyledAbout = styled.div`
     right: 0;
     background: #fff;
   }
-  .overlay[data-left] {
-    animation: ${props => props.loaded && "left 1s forwards"};
-  }
-  .overlay[data-right] {
-    animation: ${props => props.loaded && "right 1s forwards"};
-  }
   img {
     width: 100%;
     object-fit: cover;

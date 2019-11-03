@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useLayoutEffect, useRef } from "react"
+import React, { useRef } from "react"
 import { StyledAbout } from "./StyledAbout"
 
 import rawberriOne from "assets/img/rawberri-inside-1.jpg"
@@ -7,12 +7,6 @@ import rawberriYogurt from "assets/img/rawberri-yogurt.jpg"
 import { useIsVisible } from "hooks/useIsVisible"
 
 export default function About() {
-  const [loaded, setLoaded] = useState(false)
-
-  useEffect(() => {
-    setLoaded(true)
-  }, [])
-
   const leftRef = useRef()
   const rightRef = useRef()
 
@@ -28,7 +22,7 @@ export default function About() {
   })
 
   return (
-    <StyledAbout loaded={loaded}>
+    <StyledAbout>
       <div className="about-content">
         <h1>About Us</h1>
         <div className="text-wrapper">
