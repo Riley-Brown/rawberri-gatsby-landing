@@ -48,7 +48,12 @@ const Nav = ({ siteTitle, pathname }) => {
               <Link to="/contact">Contact</Link>
             </li>
             <li data-active={pathname === "/menu"}>
-              <Link to="/menu">Menu</Link>
+              <a
+                href="http://places.singleplatform.com/rawberri-3/menu"
+                target="_blank"
+              >
+                Menu
+              </a>
             </li>
             <li>
               <a href="https://wizardly-jang-d732c8.netlify.com/">Store</a>
