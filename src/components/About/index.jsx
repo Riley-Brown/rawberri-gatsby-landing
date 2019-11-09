@@ -1,12 +1,63 @@
 import React, { useRef } from "react"
-import { StyledAbout } from "./StyledAbout"
+import { useStaticQuery, graphql } from "gatsby"
+import Img from "gatsby-image"
 
-import rawberriOne from "assets/img/rawberri-inside-1.jpg"
-import rawberriYogurt from "assets/img/rawberri-yogurt.jpg"
+import { StyledAbout } from "./StyledAbout"
 
 import { useIsVisible } from "hooks/useIsVisible"
 
 export default function About() {
+  const aboutData = useStaticQuery(graphql`
+    query AboutPageQuery {
+      allContentfulAboutPage {
+        edges {
+          node {
+            id
+            pageTitle
+            aboutUsOneImage {
+              fluid {
+                ...GatsbyContentfulFluid
+              }
+            }
+            aboutUsOne {
+              id
+              content {
+                nodeType
+                content {
+                  value
+                  nodeType
+                }
+              }
+            }
+            aboutUsTwoImage {
+              fluid {
+                ...GatsbyContentfulFluid
+              }
+            }
+            aboutUsTwo {
+              id
+              content {
+                nodeType
+                content {
+                  value
+                  nodeType
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  const {
+    aboutUsOne,
+    aboutUsOneImage,
+    aboutUsTwo,
+    aboutUsTwoImage,
+    pageTitle,
+  } = aboutData.allContentfulAboutPage.edges[0].node
+
   const leftRef = useRef()
   const rightRef = useRef()
 
@@ -26,49 +77,34 @@ export default function About() {
   return (
     <StyledAbout rightVisible={rightVisible} leftVisible={leftVisible}>
       <div className="about-content">
-        <h1>About Us</h1>
+        <h1>{pageTitle}</h1>
         <div className="text-wrapper">
-          <h5>Lorem Ipsum</h5>
-          <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-            Praesentium atque ipsam cum repellat magni, repudiandae accusamus
-            sint! Minima, cum. Asperiores neque cum delectus explicabo
-            perspiciatis.
-          </p>
+          {aboutUsOne.content.map(node =>
+            node.nodeType !== "paragraph" ? (
+              <h5>{node.content[0].value}</h5>
+            ) : (
+              <p>{node.content[0].value}</p>
+            )
+          )}
         </div>
       </div>
       <div className="image-container">
-        <img data-right src={rawberriOne} ref={rightRef} alt="" />
-        <span
-          // style={{ animation: rightVisible && "right 1s forwards" }}
-          data-right
-          className="overlay"
-        />
+        <Img fluid={aboutUsOneImage.fluid} />
+        <span data-right className="overlay" ref={rightRef} />
       </div>
       <div className="image-container">
-        <img data-left src={rawberriYogurt} ref={leftRef} alt="" />
-        <span
-          data-left
-          className="overlay"
-          // style={{ animation: leftVisible && "left 1s forwards" }}
-        />
+        <Img fluid={aboutUsTwoImage.fluid} />
+        <span data-left className="overlay" ref={leftRef} />
       </div>
       <div className="about-content">
         <div className="text-wrapper">
-          <h5>Lorem Ipsum</h5>
-          <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-            Praesentium atque ipsam cum repellat magni, repudiandae accusamus
-            sint! Minima, cum. Asperiores neque cum delectus explicabo
-            perspiciatis.
-          </p>
-          <h5>Lorem Ipsum</h5>
-          <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-            Praesentium atque ipsam cum repellat magni, repudiandae accusamus
-            sint! Minima, cum. Asperiores neque cum delectus explicabo
-            perspiciatis.
-          </p>
+          {aboutUsTwo.content.map(node =>
+            node.nodeType !== "paragraph" ? (
+              <h5>{node.content[0].value}</h5>
+            ) : (
+              <p>{node.content[0].value}</p>
+            )
+          )}
         </div>
       </div>
     </StyledAbout>
