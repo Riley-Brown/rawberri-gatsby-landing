@@ -47,11 +47,14 @@ export const StyledAbout = styled.div`
     overflow: hidden;
     position: relative;
     @media (max-width: 768px) {
-      flex: 0 0 80%;
+      flex: 0 0 100%;
       margin: 20px auto;
     }
     @media (max-width: 500px) {
-      flex: 0 0 95%;
+      flex: 0 0 100%;
+    }
+    .gatsby-image-wrapper {
+      flex: auto;
     }
   }
   .overlay {
@@ -72,7 +75,7 @@ export const StyledAbout = styled.div`
     width: 100%;
     object-fit: cover;
     align-self: center;
-    max-height: 350px;
+    max-height: 375px;
     animation-timing-function: ease-out;
   }
   @keyframes right {
