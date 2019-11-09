@@ -72,18 +72,18 @@ export default function About() {
     threshold: 0.5,
   })
 
-  console.log(leftVisible, rightVisible)
-
   return (
     <StyledAbout rightVisible={rightVisible} leftVisible={leftVisible}>
       <div className="about-content">
         <h1>{pageTitle}</h1>
         <div className="text-wrapper">
-          {aboutUsOne.content.map(node =>
+          {aboutUsOne.content.map((node, index) =>
             node.nodeType !== "paragraph" ? (
-              <h5>{node.content[0].value}</h5>
+              <h5 key={index}>{node.content[0].value}</h5>
             ) : (
-              <p>{node.content[0].value}</p>
+              <p key={index}>
+                {node.content[0].value} {console.log(node)}
+              </p>
             )
           )}
         </div>
@@ -98,11 +98,11 @@ export default function About() {
       </div>
       <div className="about-content">
         <div className="text-wrapper">
-          {aboutUsTwo.content.map(node =>
+          {aboutUsTwo.content.map((node, index) =>
             node.nodeType !== "paragraph" ? (
-              <h5>{node.content[0].value}</h5>
+              <h5 key={index}>{node.content[0].value}</h5>
             ) : (
-              <p>{node.content[0].value}</p>
+              <p key={index}>{node.content[0].value}</p>
             )
           )}
         </div>
