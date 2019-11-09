@@ -6,14 +6,57 @@ import rawberriInside from "assets/img/rawberri-inside-1.jpg"
 import rawberriInsideTwo from "assets/img/rawberri-inside-2.jpg"
 import rawberriInsideThree from "assets/img/rawberri-inside-3.jpg"
 
+import Markdown from "markdown-to-jsx"
+
 import { StyledLanding } from "components/Landing/StyledLanding"
 
 import { useCarousel } from "hooks/useCarousel"
 
 import { TransitionGroup, CSSTransition } from "react-transition-group"
 
+import { useStaticQuery, graphql } from "gatsby"
+
 export default function Landing() {
   useEffect(() => setLoaded(true), [])
+
+  const landingData = useStaticQuery(graphql`
+    query LandingPageQuery {
+      allContentfulLandingPage {
+        edges {
+          node {
+            landingTitle {
+              landingTitle
+            }
+            landingSlogan
+            landingCarousel {
+              fluid {
+                src
+              }
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  const {
+    landingTitle,
+    landingSlogan,
+    landingCarousel,
+  } = landingData.allContentfulLandingPage.edges[0].node
+
+  console.log(
+    landingTitle.landingTitle
+      .split(" ")
+      .map(word =>
+        word.includes("_") ? (
+          <span>{word.slice(2, word.length - 2)}</span>
+        ) : (
+          word
+        )
+      )
+      .join(" ")
+  )
 
   const [randomNum, setRandomNum] = useState(Math.floor(Math.random() * 50))
   const [loaded, setLoaded] = useState(false)
@@ -61,10 +104,9 @@ export default function Landing() {
           </div>
         </CSSTransition>
       </TransitionGroup>
-      {/* <CSSTransition appear={true} classNames="fade" timeout={1000} in={true}> */}
       <div className="landing-content">
         <h1>
-          Welcome to <span>Rawberri</span>
+          <Markdown>{landingTitle.landingTitle}</Markdown>
         </h1>
         <h6>An organic super-food cafe </h6>
         <div className="buttons">
@@ -88,7 +130,6 @@ export default function Landing() {
           </button>
         </div>
       </div>
-      {/* </CSSTransition> */}
     </StyledLanding>
   )
 }
