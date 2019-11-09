@@ -51,6 +51,10 @@ export const StyledLanding = styled.div`
       }
       span {
         font-size: inherit;
+        font-weight: inherit;
+      }
+      strong {
+        font-size: inherit;
         font-weight: bold;
       }
     }
