@@ -96,8 +96,18 @@ export const StyledContact = styled.div`
     background: #fff;
     padding: 20px;
     display: flex;
+    .gatsby-image-wrapper {
+      width: 100%;
+      img {
+        object-fit: contain !important;
+      }
+    }
     @media (max-width: 1100px) {
       flex: 0 0 40%;
+    }
+    @media (max-width: 960px) {
+      flex: 1 1 auto;
+      height: 500px;
     }
     img {
       width: 100%;
