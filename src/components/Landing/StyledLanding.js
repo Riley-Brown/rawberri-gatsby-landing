@@ -105,7 +105,8 @@ export const StyledLanding = styled.div`
     right: 0;
     z-index: -1;
     overflow: hidden;
-    img {
+    img,
+    .gatsby-image-wrapper {
       height: calc(100vh - 101px);
       object-fit: cover;
       width: 100%;
